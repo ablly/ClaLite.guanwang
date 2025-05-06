@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ClawLite - 猫爪动态补光App</title>
+    <meta name="description" content="ClawLite是一款创新的自拍补光应用，采用猫爪造型的光效来提升您的自拍体验。无论您身处地铁、餐厅、电影院等各种光线不足的环境，ClawLite都能为您提供优质的补光效果。">
+    <link rel="icon" href="../web/favicon.png" type="image/png">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="node_modules/animejs/lib/anime.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <script src="script.js"></script>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <div class="logo">
+                <img src="logo.png" alt="ClawLite Logo">
+                <span>ClawLite</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#features">功能</a></li>
+                <li><a href="#scenes">场景</a></li>
+                <li><a href="#download">应用体验</a></li>
+                <li><a href="#about">关于我</a></li>
+            </ul>
+            <div class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="svg-bg-container">
+            <svg class="svg-bg" width="100%" height="100%" viewBox="0 0 1000 500" preserveAspectRatio="none">
+                <path class="svg-path-1" d="M0,100 C150,150 350,0 500,100 C650,200 850,150 1000,100 L1000,500 L0,500 Z"></path>
+                <path class="svg-path-2" d="M0,150 C150,200 350,50 500,150 C650,250 850,200 1000,150 L1000,500 L0,500 Z"></path>
+                <path class="svg-path-3" d="M0,200 C150,250 350,100 500,200 C650,300 850,250 1000,200 L1000,500 L0,500 Z"></path>
+            </svg>
+        </div>
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="animate-text">ClawLite</h1>
+                <h2 class="animate-text">猫爪动态补光App</h2>
+                <p class="animate-text">创新的自拍补光应用，让您在任何光线环境下都能拍出完美照片</p>
+                <div class="cta-buttons">
+                    <a href="#download" class="btn btn-primary animate-btn">了解产品</a>
+                    <a href="#features" class="btn btn-secondary animate-btn">了解更多</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="images/hero-mockup.svg" alt="ClawLite App 展示" class="animate-mockup">
+                <svg class="paw-svg" width="100" height="100" viewBox="0 0 100 100">
+                    <path class="paw-path" d="M25,40 C28,30 32,25 35,35 C38,45 35,50 30,45 C25,40 22,50 25,40 Z"></path>
+                    <path class="paw-path" d="M45,35 C48,25 52,20 55,30 C58,40 55,45 50,40 C45,35 42,45 45,35 Z"></path>
+                    <path class="paw-path" d="M65,40 C68,30 72,25 75,35 C78,45 75,50 70,45 C65,40 62,50 65,40 Z"></path>
+                    <path class="paw-path" d="M40,60 C50,50 65,50 75,60 C85,70 75,90 60,90 C45,90 30,80 40,60 Z"></path>
+                </svg>
+            </div>
+        </div>
+        <div class="hero-particles">
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+        </div>
+    </section>
+
+    <section id="features" class="features">
+        <div class="container">
+            <h2 class="section-title anime-trigger">核心功能</h2>
+            <div class="svg-divider">
+                <svg width="300" height="50" viewBox="0 0 300 50">
+                    <line class="svg-line" x1="10" y1="25" x2="290" y2="25" stroke-width="2" />
+                    <circle class="svg-circle" cx="150" cy="25" r="15" />
+                </svg>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card anime-card">
+                    <div class="feature-icon">
+                        <svg class="feature-svg" width="70" height="70" viewBox="0 0 70 70">
+                            <circle class="svg-circle-bg" cx="35" cy="35" r="32" />
+                            <path class="svg-icon-path" d="M25,30 C28,20 32,15 35,25 C38,35 35,40 30,35 C25,30 22,40 25,30 Z"></path>
+                            <path class="svg-icon-path" d="M45,25 C48,15 52,10 55,20 C58,30 55,35 50,30 C45,25 42,35 45,25 Z"></path>
+                        </svg>
+                    </div>
+                    <h3>猫爪造型光效</h3>
+                    <p>全屏覆盖式补光，模拟专业摄影补光效果，动态光线随环境亮度自动调节</p>
+                </div>
+                <div class="feature-card anime-card">
+                    <div class="feature-icon">
+                        <svg class="feature-svg" width="70" height="70" viewBox="0 0 70 70">
+                            <circle class="svg-circle-bg" cx="35" cy="35" r="32" />
+                            <path class="svg-icon-path" d="M20,35 C20,25 35,15 50,25 C65,35 55,55 35,55 C15,55 20,45 20,35 Z"></path>
+                        </svg>
+                    </div>
+                    <h3>多种肤色预设</h3>
+                    <p>少女感、磨皮感、冷白皮等多种肤色预设，一键切换，满足不同场景需求</p>
+                </div>
+                <div class="feature-card anime-card">
+                    <div class="feature-icon">
+                        <svg class="feature-svg" width="70" height="70" viewBox="0 0 70 70">
+                            <circle class="svg-circle-bg" cx="35" cy="35" r="32" />
+                            <path class="svg-icon-path" d="M20,25 L50,25 M20,35 L50,35 M20,45 L50,45"></path>
+                            <circle class="svg-slider-knob" cx="30" cy="25" r="5" />
+                            <circle class="svg-slider-knob" cx="40" cy="35" r="5" />
+                            <circle class="svg-slider-knob" cx="35" cy="45" r="5" />
+                        </svg>
+                    </div>
+                    <h3>精确亮度控制</h3>
+                    <p>通过直观的滑块界面精确调节补光亮度，轻松应对各种光线环境</p>
+                </div>
+                <div class="feature-card anime-card">
+                    <div class="feature-icon">
+                        <svg class="feature-svg" width="70" height="70" viewBox="0 0 70 70">
+                            <circle class="svg-circle-bg" cx="35" cy="35" r="32" />
+                            <path class="svg-icon-path" d="M25,25 L45,25 L45,45 L25,45 Z"></path>
+                            <path class="svg-icon-path" d="M30,30 L40,30 L40,40 L30,40 Z"></path>
+                        </svg>
+                    </div>
+                    <h3>动画效果控制</h3>
+                    <p>调整光效大小和动画效果，创造个性化的补光体验</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="scenes" class="scenes">
+        <div class="svg-wave-top">
+            <svg width="100%" height="80" viewBox="0 0 1000 100" preserveAspectRatio="none">
+                <path class="svg-wave" d="M0,50 C250,0 350,100 500,50 C650,0 750,100 1000,50 L1000,100 L0,100 Z"></path>
+            </svg>
+        </div>
+        <div class="container">
+            <h2 class="section-title anime-trigger">肤色预设与光效控制</h2>
+            <div class="svg-divider">
+                <svg width="300" height="50" viewBox="0 0 300 50">
+                    <line class="svg-line" x1="10" y1="25" x2="290" y2="25" stroke-width="2" />
+                    <circle class="svg-circle" cx="150" cy="25" r="15" />
+                </svg>
+            </div>
+            <div class="scenes-slider">
+                <div class="scene-card fade-in" data-delay="0.1">
+                    <div class="scene-image">
+                        <div class="color-display" style="background-color: #FFD2D2;"></div>
+                        <div class="scene-overlay" style="background-color: rgba(255, 210, 210, 0.2);"></div>
+                        <div class="color-preview">
+                            <span class="color-name">粉嫩肤色</span>
+                            <span class="color-hex">#FFD2D2</span>
+                        </div>
+                    </div>
+                    <div class="scene-content">
+                        <div class="scene-badge">推荐</div>
+                        <h3>少女感</h3>
+                        <p>打造清新甜美的少女感，适合各类青春活力场景，轻松呈现粉嫩肌肤效果。</p>
+                    </div>
+                    <div class="scene-card-footer">
+                        <button class="btn-apply">应用</button>
+                        <button class="btn-preview">预览</button>
+                    </div>
+                </div>
+                <div class="scene-card fade-in" data-delay="0.2">
+                    <div class="scene-image">
+                        <div class="color-display" style="background-color: #F5DFCB;"></div>
+                        <div class="scene-overlay" style="background-color: rgba(245, 223, 203, 0.2);"></div>
+                        <div class="color-preview">
+                            <span class="color-name">丝滑肤色</span>
+                            <span class="color-hex">#F5DFCB</span>
+                        </div>
+                    </div>
+                    <div class="scene-content">
+                        <h3>磨皮感</h3>
+                        <p>精细磨皮算法，呈现细腻丝滑质感，完美遮盖毛孔和瑕疵，打造无暇肌肤。</p>
+                    </div>
+                    <div class="scene-card-footer">
+                        <button class="btn-apply">应用</button>
+                        <button class="btn-preview">预览</button>
+                    </div>
+                </div>
+                <div class="scene-card fade-in" data-delay="0.3">
+                    <div class="scene-image">
+                        <div class="color-display" style="background-color: #F0F0F5;"></div>
+                        <div class="scene-overlay" style="background-color: rgba(240, 240, 245, 0.2);"></div>
+                        <div class="color-preview">
+                            <span class="color-name">冷调白皙</span>
+                            <span class="color-hex">#F0F0F5</span>
+                        </div>
+                    </div>
+                    <div class="scene-content">
+                        <h3>冷白皮</h3>
+                        <p>打造高级感冷白皮肤色调，适合时尚大片和高级感场景，让肌肤呈现发光感。</p>
+                    </div>
+                    <div class="scene-card-footer">
+                        <button class="btn-apply">应用</button>
+                        <button class="btn-preview">预览</button>
+                    </div>
+                </div>
+                <div class="scene-card fade-in" data-delay="0.4">
+                    <div class="scene-image">
+                        <div class="color-display" style="background-color: #F8D5A8;"></div>
+                        <div class="scene-overlay" style="background-color: rgba(248, 213, 168, 0.2);"></div>
+                        <div class="color-preview">
+                            <span class="color-name">阳光暖肤</span>
+                            <span class="color-hex">#F8D5A8</span>
+                        </div>
+                    </div>
+                    <div class="scene-content">
+                        <h3>暖调肤</h3>
+                        <p>温暖自然的肤色调整，呈现健康活力感，适合户外场景和阳光主题直播。</p>
+                    </div>
+                    <div class="scene-card-footer">
+                        <button class="btn-apply">应用</button>
+                        <button class="btn-preview">预览</button>
+                    </div>
+                </div>
+            </div>
+            <div class="scenes-nav">
+                <button class="prev-btn anime-btn">
+                    <svg width="20" height="20" viewBox="0 0 20 20">
+                        <path class="svg-arrow" d="M15,10 L5,10 M10,5 L5,10 L10,15"></path>
+                    </svg>
+                </button>
+                <button class="next-btn anime-btn">
+                    <svg width="20" height="20" viewBox="0 0 20 20">
+                        <path class="svg-arrow" d="M5,10 L15,10 M10,5 L15,10 L10,15"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <div class="svg-wave-bottom">
+            <svg width="100%" height="80" viewBox="0 0 1000 100" preserveAspectRatio="none">
+                <path class="svg-wave" d="M0,50 C250,100 350,0 500,50 C650,100 750,0 1000,50 L1000,0 L0,0 Z"></path>
+            </svg>
+        </div>
+    </section>
+
+    <section class="control-features">
+        <div class="container">
+            <h2 class="section-title anime-trigger">精确控制</h2>
+            <div class="svg-divider">
+                <svg width="300" height="50" viewBox="0 0 300 50">
+                    <line class="svg-line" x1="10" y1="25" x2="290" y2="25" stroke-width="2" />
+                    <circle class="svg-circle" cx="150" cy="25" r="15" />
+                </svg>
+            </div>
+            <div class="control-grid">
+                <div class="control-item anime-control">
+                    <div class="control-image">
+                        <svg class="control-svg" width="200" height="150" viewBox="0 0 200 150">
+                            <path class="svg-control-bg" d="M20,20 L180,20 L180,90 L20,90 Z"></path>
+                            <line class="svg-slider-track" x1="30" y1="55" x2="170" y2="55" />
+                            <circle class="svg-slider-handle brightness-handle" cx="100" cy="55" r="12" />
+                            <circle class="brightness-indicator" cx="30" cy="35" r="5" fill="#ffd166" opacity="0.3" />
+                            <circle class="brightness-indicator" cx="100" cy="35" r="10" fill="#ffd166" opacity="0.6" />
+                            <circle class="brightness-indicator" cx="170" cy="35" r="15" fill="#ffd166" opacity="0.9" />
+                        </svg>
+                        <div class="control-label">亮度</div>
+                    </div>
+                    <div class="control-desc">
+                        <h3>亮度调节</h3>
+                        <p>通过直观的滑块界面精确调节补光亮度，从柔和到明亮，满足各种环境需求</p>
+                    </div>
+                </div>
+                <div class="control-item anime-control">
+                    <div class="control-image">
+                        <svg class="control-svg" width="200" height="150" viewBox="0 0 200 150">
+                            <path class="svg-control-bg" d="M20,20 L180,20 L180,90 L20,90 Z"></path>
+                            <line class="svg-slider-track" x1="30" y1="55" x2="170" y2="55" />
+                            <circle class="svg-slider-handle size-handle" cx="120" cy="55" r="12" />
+                            <circle class="size-indicator" cx="50" cy="35" r="5" fill="#4ecdc4" />
+                            <circle class="size-indicator" cx="100" cy="35" r="10" fill="#4ecdc4" />
+                            <circle class="size-indicator" cx="150" cy="35" r="15" fill="#4ecdc4" />
+                        </svg>
+                        <div class="control-label">大小</div>
+                    </div>
+                    <div class="control-desc">
+                        <h3>动画大小控制</h3>
+                        <p>调整光效大小，从细微点缀到全屏覆盖，创造个性化的补光效果</p>
+                    </div>
+                </div>
+                <div class="control-item anime-control">
+                    <div class="control-image">
+                        <svg class="control-svg color-wheel-svg" width="200" height="150" viewBox="0 0 200 150">
+                            <defs>
+                                <linearGradient id="colorGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                                    <stop offset="0%" stop-color="#ff0000" />
+                                    <stop offset="12.5%" stop-color="#ff8000" />
+                                    <stop offset="25%" stop-color="#ffff00" />
+                                    <stop offset="37.5%" stop-color="#80ff00" />
+                                    <stop offset="50%" stop-color="#00ff00" />
+                                    <stop offset="62.5%" stop-color="#00ff80" />
+                                    <stop offset="75%" stop-color="#00ffff" />
+                                    <stop offset="87.5%" stop-color="#0080ff" />
+                                    <stop offset="100%" stop-color="#ff00ff" />
+                                </linearGradient>
+                            </defs>
+                            <rect class="svg-color-track" x="30" y="45" width="140" height="20" rx="10" fill="url(#colorGradient)" />
+                            <circle class="svg-color-handle" cx="100" cy="55" r="15" />
+                            <g class="color-samples" transform="translate(30, 80)">
+                                <circle cx="0" cy="0" r="5" fill="#ff0000" />
+                                <circle cx="20" cy="0" r="5" fill="#ff8000" />
+                                <circle cx="40" cy="0" r="5" fill="#ffff00" />
+                                <circle cx="60" cy="0" r="5" fill="#00ff00" />
+                                <circle cx="80" cy="0" r="5" fill="#00ffff" />
+                                <circle cx="100" cy="0" r="5" fill="#0080ff" />
+                                <circle cx="120" cy="0" r="5" fill="#ff00ff" />
+                            </g>
+                        </svg>
+                        <div class="control-label">颜色</div>
+                    </div>
+                    <div class="control-desc">
+                        <h3>颜色选择器</h3>
+                        <p>通过彩色滑块自由选择光效颜色，满足不同场景和个人喜好</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="tech-features">
+        <div class="svg-wave-top">
+            <svg width="100%" height="80" viewBox="0 0 1000 100" preserveAspectRatio="none">
+                <path class="svg-wave" d="M0,50 C250,0 350,100 500,50 C650,0 750,100 1000,50 L1000,100 L0,100 Z"></path>
+            </svg>
+        </div>
+        <div class="container">
+            <h2 class="section-title anime-trigger">技术特点</h2>
+            <div class="svg-divider">
+                <svg width="300" height="50" viewBox="0 0 300 50">
+                    <line class="svg-line" x1="10" y1="25" x2="290" y2="25" stroke-width="2" />
+                    <circle class="svg-circle" cx="150" cy="25" r="15" />
+                </svg>
+            </div>
+            <div class="tech-grid">
+                <div class="tech-item anime-tech">
+                    <svg class="tech-svg" width="80" height="80" viewBox="0 0 80 80">
+                        <circle class="svg-tech-circle" cx="40" cy="40" r="25" stroke="#4361ee" stroke-width="2" fill="rgba(67, 97, 238, 0.1)" />
+                        <rect class="svg-tech-rect" x="25" y="25" width="15" height="30" rx="2" stroke="#4361ee" stroke-width="1.5" fill="rgba(67, 97, 238, 0.2)" />
+                        <rect class="svg-tech-rect" x="40" y="25" width="15" height="30" rx="2" stroke="#4361ee" stroke-width="1.5" fill="rgba(67, 97, 238, 0.2)" />
+                        <path class="svg-tech-path" d="M32.5,35 L32.5,45" stroke="#ff6b6b" stroke-width="2" />
+                        <path class="svg-tech-path" d="M47.5,35 L47.5,45" stroke="#ff6b6b" stroke-width="2" />
+                        <path class="svg-tech-path" d="M30,40 L35,40" stroke="#ff6b6b" stroke-width="2" />
+                        <path class="svg-tech-path" d="M45,40 L50,40" stroke="#ff6b6b" stroke-width="2" />
+                    </svg>
+                    <h3>跨平台兼容</h3>
+                    <p>采用Flutter框架开发，实现iOS和Android双平台兼容</p>
+                </div>
+                <div class="tech-item anime-tech">
+                    <svg class="tech-svg" width="80" height="80" viewBox="0 0 80 80">
+                        <path class="svg-tech-path" d="M40,20 L60,40 L40,60 L20,40 Z" stroke="#f72585" stroke-width="2" fill="rgba(247, 37, 133, 0.1)" />
+                        <path class="svg-tech-path" d="M40,25 L55,40 L40,55 L25,40 Z" stroke="#f72585" stroke-width="2" fill="rgba(247, 37, 133, 0.2)" />
+                        <line class="svg-tech-line" x1="40" y1="20" x2="40" y2="15" stroke="#4cc9f0" stroke-width="2" />
+                        <line class="svg-tech-line" x1="60" y1="40" x2="65" y2="40" stroke="#4cc9f0" stroke-width="2" />
+                        <line class="svg-tech-line" x1="40" y1="60" x2="40" y2="65" stroke="#4cc9f0" stroke-width="2" />
+                        <line class="svg-tech-line" x1="20" y1="40" x2="15" y2="40" stroke="#4cc9f0" stroke-width="2" />
+                        <circle class="svg-tech-star" cx="40" cy="40" r="5" fill="#7209b7" />
+                    </svg>
+                    <h3>高性能光效</h3>
+                    <p>优化的光效渲染引擎，即使在低端设备上也能流畅运行，低功耗设计</p>
+                </div>
+                <div class="tech-item anime-tech">
+                    <svg class="tech-svg" width="80" height="80" viewBox="0 0 80 80">
+                        <circle class="svg-tech-circle" cx="40" cy="40" r="25" stroke="#06d6a0" stroke-width="2" fill="rgba(6, 214, 160, 0.1)" />
+                        <path class="svg-tech-path" d="M25,40 C25,25 55,25 55,40 C55,55 25,55 25,40 Z" stroke="#ffbe0b" stroke-width="2" fill="rgba(255, 190, 11, 0.2)" />
+                        <circle class="svg-tech-dot" cx="30" cy="40" r="3" fill="#fb5607" />
+                        <circle class="svg-tech-dot" cx="40" cy="40" r="3" fill="#fb5607" />
+                        <circle class="svg-tech-dot" cx="50" cy="40" r="3" fill="#fb5607" />
+                    </svg>
+                    <h3>多种光源形状</h3>
+                    <p>支持圆形、方形、心形等多种光效形状，满足不同风格的自拍需求</p>
+                </div>
+                <div class="tech-item anime-tech">
+                    <svg class="tech-svg" width="80" height="80" viewBox="0 0 80 80">
+                        <path class="svg-tech-path" d="M30,25 L50,25 L50,60 L40,50 L30,60 Z" stroke="#8338ec" stroke-width="2" fill="rgba(131, 56, 236, 0.1)" />
+                        <line class="svg-tech-line" x1="35" y1="35" x2="45" y2="35" stroke="#ff006e" stroke-width="2" />
+                        <line class="svg-tech-line" x1="35" y1="40" x2="45" y2="40" stroke="#ff006e" stroke-width="2" />
+                        <line class="svg-tech-line" x1="35" y1="45" x2="40" y2="45" stroke="#ff006e" stroke-width="2" />
+                    </svg>
+                    <h3>中文本地化</h3>
+                    <p>完全中文化的用户界面和操作提示，无需担心语言障碍</p>
+                </div>
+                <div class="tech-item anime-tech">
+                    <svg class="tech-svg" width="80" height="80" viewBox="0 0 80 80">
+                        <circle class="svg-tech-circle-outer" cx="40" cy="40" r="25" stroke="#3a86ff" stroke-width="2" fill="rgba(58, 134, 255, 0.05)" />
+                        <circle class="svg-tech-circle-inner" cx="40" cy="40" r="15" stroke="#3a86ff" stroke-width="2" fill="rgba(58, 134, 255, 0.1)" />
+                        <line class="svg-tech-ray" x1="40" y1="15" x2="40" y2="25" stroke="#ff9e00" stroke-width="2" />
+                        <line class="svg-tech-ray" x1="40" y1="55" x2="40" y2="65" stroke="#ff9e00" stroke-width="2" />
+                        <line class="svg-tech-ray" x1="15" y1="40" x2="25" y2="40" stroke="#ff9e00" stroke-width="2" />
+                        <line class="svg-tech-ray" x1="55" y1="40" x2="65" y2="40" stroke="#ff9e00" stroke-width="2" />
+                        <line class="svg-tech-ray" x1="23" y1="23" x2="30" y2="30" stroke="#ff9e00" stroke-width="2" />
+                        <line class="svg-tech-ray" x1="50" y1="50" x2="57" y2="57" stroke="#ff9e00" stroke-width="2" />
+                        <line class="svg-tech-ray" x1="23" y1="57" x2="30" y2="50" stroke="#ff9e00" stroke-width="2" />
+                        <line class="svg-tech-ray" x1="50" y1="30" x2="57" y2="23" stroke="#ff9e00" stroke-width="2" />
+                    </svg>
+                    <h3>实时预览</h3>
+                    <p>所有调整都能实时反馈到屏幕，所见即所得的操作体验</p>
+                </div>
+            </div>
+        </div>
+        <div class="svg-wave-bottom">
+            <svg width="100%" height="80" viewBox="0 0 1000 100" preserveAspectRatio="none">
+                <path class="svg-wave" d="M0,50 C250,100 350,0 500,50 C650,100 750,0 1000,50 L1000,0 L0,0 Z"></path>
+            </svg>
+        </div>
+    </section>
+
+    <section id="download" class="download-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>获取应用</h2>
+                <div class="accent-bar"></div>
+            </div>
+            
+            <div class="download-content">
+                <div class="download-info">
+                    <div class="download-description">
+                        <p>ClawLite 目前处于测试阶段，我们正在不断完善和改进应用体验。您可以通过以下方式获取并尝试使用我们的应用。欢迎提供宝贵意见和建议，帮助我们打造更好的自拍灯光增强工具！</p>
+                    </div>
+                    
+                    <div class="download-options">
+                        <div class="download-option">
+                            <div class="download-icon">
+                                <i class="fas fa-code-branch"></i>
+                            </div>
+                            <div class="download-option-content">
+                                <h3>开源项目</h3>
+                                <p>ClawLite 是一个开源项目，您可以在 GitHub 上查看源代码、提交问题或贡献代码。</p>
+                                <a href="https://github.com/ablly/ClaLite" class="btn-download" target="_blank">
+                                    <i class="fab fa-github"></i> 访问 GitHub 项目
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <div class="download-option">
+                            <div class="download-icon">
+                                <i class="fab fa-android"></i>
+                            </div>
+                            <div class="download-option-content">
+                                <h3>Android 应用</h3>
+                                <p>下载 APK 文件直接在 Android 设备上安装（需要 Android 7.0 及以上版本）。</p>
+                                <a href="downloads/app-release.apk" class="btn-download" download>
+                                    <i class="fas fa-download"></i> 下载 APK 文件
+                                </a>
+                            </div>
+                        </div>
+                        
+                        
+                    </div>
+                    
+                    <div class="version-info">
+                        <span class="version-tag">正式版 V1.1.0</span>
+                        <span class="version-date">最后更新: 2025-4-18</span>
+                    </div>
+                </div>
+                
+                <div class="download-preview">
+                    <div class="phone-mockup">
+                        <div class="phone-screen">
+                            <div class="preview-content">
+                                <div class="app-header">
+                                    <div class="app-title">猫爪补光</div>
+                                    <div class="app-icons">
+                                        <div class="app-icon light-icon"></div>
+                                        <div class="app-icon settings-icon"></div>
+                                    </div>
+                                </div>
+                                <div class="star-effect-container">
+                                    <div class="star-effect"></div>
+                                </div>
+                            </div>
+                            <div class="preview-overlay">
+                                <div class="preview-light-effect"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="about-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>关于项目</h2>
+                <div class="accent-bar"></div>
+            </div>
+            
+            <div class="about-content">
+                <div class="about-text">
+                    <p>ClawLite 是一个个人开源项目，旨在为自拍爱好者提供简单易用的灯光效果增强工具。作为一名热爱摄影和技术的开发者，我希望通过这个应用让更多人能够在日常自拍中获得专业级的灯光效果。</p>
+                    
+                    <p>这个项目诞生于我在日常拍摄中经常遇到的灯光不足问题。通过研究和尝试，我开发了这款应用，希望能够帮助更多人轻松获得更好的自拍效果。</p>
+                    
+                    <p>感谢您对 ClawLite 的关注和支持！作为一个不断发展的项目，我非常重视每一位用户的反馈和建议。无论是功能改进、bug 修复还是新创意，都欢迎您随时联系我。</p>
+                    
+                    <div class="about-contact">
+                        <a href="mailto:contact@clawlite.com" class="contact-link">
+                            <i class="fas fa-envelope"></i> 3533912007@qq.com
+                        </a>
+                        <a href="https://github.com/ablly" class="contact-link" target="_blank">
+                            <i class="fab fa-github"></i> GitHub
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="about-creator">
+                    <div class="creator-avatar">
+                        <img src="images/IMG_0177.JPG" alt="开发者头像" class="avatar-img">
+                        <div class="avatar-glow"></div>
+                    </div>
+                    <div class="creator-info">
+                        <h3>ablly-z</h3>
+                        <p class="creator-title">移动开发爱好者 & UI设计师 & 前端开发工程师</p>
+                        <p class="creator-bio">
+                            热爱创造有趣且实用的应用程序，专注于用户体验和视觉设计。闲暇时喜欢摄影和电子音乐创作。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="logo.png" alt="ClawLite Logo" style="max-width: 40px; height: auto;">
+                    <span>ClawLite</span>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-links-column">
+                        <h4>导航</h4>
+                        <ul>
+                            <li><a href="#features">功能</a></li>
+                            <li><a href="#scenes">场景</a></li>
+                            <li><a href="#download">应用体验</a></li>
+                            <li><a href="#about">关于我</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-links-column">
+                        <h4>法律</h4>
+                        <ul>
+                            <li><a href="privacy.html">隐私政策</a></li>
+                            <li><a href="terms.html">使用条款</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-links-column">
+                        <h4>关注我们</h4>
+                        <div class="social-links">
+                            <a href="#" id="wechat-link"><i class="fab fa-weixin"></i></a>
+                            <a href="#"><i class="fab fa-weibo"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 ClawLite. 个人网站 保留所有权利。<a href="https://beian.miit.gov.cn/" target="_blank">蜀ICP备2025135924号-3</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 微信二维码弹窗 -->
+    <div id="wechat-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h3>扫一扫上面的二维码图案，加我为朋友。</h3>
+            <div class="qrcode-container">
+                <img src="images/wechat-qrcode.png" alt="微信二维码">
+                <div class="qrcode-info">
+                    <h4>agnoye</h4>
+                    <p>四川 成都</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 微信弹窗功能
+        document.addEventListener('DOMContentLoaded', function() {
+            var wechatLink = document.getElementById('wechat-link');
+            var wechatModal = document.getElementById('wechat-modal');
+            var closeModal = document.querySelector('.close-modal');
+            
+            if (wechatLink && wechatModal) {
+                wechatLink.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    wechatModal.style.display = 'block';
+                });
+                
+                if (closeModal) {
+                    closeModal.addEventListener('click', function() {
+                        wechatModal.style.display = 'none';
+                    });
+                }
+                
+                window.addEventListener('click', function(e) {
+                    if (e.target == wechatModal) {
+                        wechatModal.style.display = 'none';
+                    }
+                });
+            }
+        });
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>

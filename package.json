@@ -1,0 +1,29 @@
+{
+  "name": "clawlite-website",
+  "version": "1.0.0",
+  "description": "ClawLite猫爪动态补光App官方网站",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "keywords": [
+    "clawlite",
+    "app",
+    "website"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "animejs": "^4.0.2",
+    "express": "^4.18.2",
+    "figma-api": "^1.11.0",
+    "socket.io": "^4.7.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  },
+  "figma": {
+    "channel": "uglsshak"
+  }
+}
